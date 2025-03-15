@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Englishজানালা</title>
+    <link rel="shortcut icon" href="assets/logo.png " type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap");
+      .active {
+        background-color: #422ad5;
+        color: white;
+      }
+      .hind-siliguri-medium {
+        font-family: "Hind Siliguri", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class="w-11/12 mx-auto mt-4">
+    <header>
+      <nav class="flex justify-between">
+        <div>
+          <h1 class="flex items-center text-xl font-semibold">
+            <span class="font-['Poppins']">English</span
+            ><img src="assets/logo.png" alt="" /><span
+              class="hind-siliguri-medium font-normal"
+              >জানালা</span
+            >
+          </h1>
+        </div>
+        <div class="flex gap-4">
+          <button
+            onclick="scrollToFaq()"
+            class="flex group items-center border-solid border-[#422AD5] border-2 rounded-lg px-4 cursor-pointer text-[#422AD5] font-semibold gap-2 hover:bg-[#422AD5] hover:text-white"
+          >
+            <img
+              class="transition-all group-hover:brightness-0 group-hover:invert"
+              src="assets/fa-circle-question.png"
+              alt=""
+            />
+            FAQ
+          </button>
+          <button
+            onclick="scrollToLearn()"
+            class="flex group items-center border-solid border-[#422AD5] border-2 rounded-lg px-4 cursor-pointer text-[#422AD5] font-semibold gap-2 hover:bg-[#422AD5] hover:text-white"
+          >
+            <img
+              class="transition-all group-hover:brightness-0 group-hover:invert"
+              src="assets/fa-book-open.png"
+              alt=""
+            />Learn
+          </button>
+          <button
+            id="logout"
+            class="flex group items-center border-solid border-[#422AD5] border-2 rounded-lg px-4 cursor-pointer text-[#422AD5] font-semibold gap-2 hover:bg-[#422AD5] hover:text-white"
+          >
+            <img
+              class="transition-all group-hover:brightness-0 group-hover:invert"
+              src="assets/fa-arrow-right-from-bracket.png"
+              alt=""
+            />Logout
+          </button>
+        </div>
+      </nav>
+    </header>
+    <hr class="my-4" />
+    <main>
+      <section class="flex justify-between items-center gap-4">
+        <div class="flex flex-col gap-4">
+          <h1 class="text-5xl font-bold">
+            <span class="text-[#00BCFF]">English</span> is Easy!!
+          </h1>
+          <p
+            class="text-2xl text-[#18181B80] hind-siliguri-medium leading-relaxed"
+          >
+            আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+            আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+            অন্য একটি Level এ
+          </p>
+          <div class="flex flex-col gap-4">
+            <input
+              id="name"
+              class="p-4 rounded-lg"
+              type="text"
+              placeholder="Enter Your Name"
+            />
+            <input
+              id="password"
+              class="p-4 rounded-lg"
+              type="number"
+              placeholder="Enter Your Password"
+            />
+            <button
+              id="login-btn"
+              class="rounded-lg p-4 cursor-pointer font-semibold bg-[#422AD5] text-white"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+        <img src="assets/hero-student.png" alt="" />
+      </section>
+
+      <section id="learn-vocabularies" class="hidden">
+        <h1 class="text-4xl font-bold text-center mt-10">
+          <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
+        </h1>
+        <div id="learn" class="flex gap-4 justify-center mt-10"></div>
+        <div
+          id="words"
+          class="bg-[#F8F8F8] grid grid-cols-3 gap-4 mt-4 p-5 rounded-3xl"
+        >
+          <div
+            class="flex flex-col gap-2 items-center justify-center py-14 text-center col-span-full"
+          >
+            <p class="text-sm text-[#62748E] hind-siliguri-medium">
+              আপনি এখনো কোন Lesson Select করেন না
+            </p>
+            <h1
+              class="text-3xl text-[#292524] font-medium hind-siliguri-medium"
+            >
+              একটি Lesson Select করুন।
+            </h1>
+          </div>
+        </div>
+        <dialog id="word_details" class="modal">
+          <div
+            id="word-details-box"
+            class="modal-box flex flex-col gap-4"
+          ></div>
+        </dialog>
+      </section>
+
+      <section id="faq" class="hidden">
+        <h1 class="text-4xl font-bold text-center mt-20">
+          <span class="text-[#00BCFF]">Frequently</span> Asked Questions
+        </h1>
+        <div class="bg-[#F8F8F8] p-5 rounded-lg mt-4 flex justify-between">
+          <div>
+            <h2 class="text-base font-medium">
+              1. The difference between var, let, and const
+            </h2>
+            <p id="answer" class="text-[#62748E] hidden">
+              Difference between var, let, and const is that var is a global
+              variable, let is a local variable, and const is a constant
+              variable.
+            </p>
+          </div>
+          <button id="minus" class="hidden">
+            <img src="assets/minus.png" alt="" />
+          </button>
+          <button id="plus"><img src="assets/plus.png" alt="" /></button>
+        </div>
+        <div class="bg-[#F8F8F8] p-5 rounded-lg mt-4 flex justify-between">
+          <div>
+            <h2 class="text-base font-medium">
+              2. The difference between map(), forEach(), and filter()
+            </h2>
+            <p id="answer" class="text-[#62748E] hidden">
+              Difference between map(), forEach(), and filter() is that map()
+              returns a new array, forEach() does not return a new array, and
+              filter() returns a new array.
+            </p>
+          </div>
+          <button id="minus" class="hidden">
+            <img src="assets/minus.png" alt="" />
+          </button>
+          <button id="plus"><img src="assets/plus.png" alt="" /></button>
+        </div>
+        <div class="bg-[#F8F8F8] p-5 rounded-lg mt-4 flex justify-between">
+          <div>
+            <h2 class="text-base font-medium">
+              3. Explain arrow functions and how they are different from regular
+              functions
+            </h2>
+            <p id="answer" class="text-[#62748E] hidden">
+              Arrow functions are functions that are defined using the =>
+              syntax. They are different from regular functions in that they do
+              not have their own this value, and they do not have their own
+              arguments object.
+            </p>
+          </div>
+          <button id="minus" class="hidden">
+            <img src="assets/minus.png" alt="" />
+          </button>
+          <button id="plus"><img src="assets/plus.png" alt="" /></button>
+        </div>
+        <div class="bg-[#F8F8F8] p-5 rounded-lg mt-4 flex justify-between">
+          <div>
+            <h2 class="text-base font-medium">
+              4. How JavaScript Promises work
+            </h2>
+            <p id="answer" class="text-[#62748E] hidden">
+              JavaScript promises are a way to handle asynchronous operations in
+              a more readable and maintainable way.
+            </p>
+          </div>
+          <button id="minus" class="hidden">
+            <img src="assets/minus.png" alt="" />
+          </button>
+          <button id="plus"><img src="assets/plus.png" alt="" /></button>
+        </div>
+        <div class="bg-[#F8F8F8] p-5 rounded-lg mt-4 flex justify-between">
+          <div>
+            <h2 class="text-base font-medium">
+              5. How closures work in JavaScript
+            </h2>
+            <p id="answer" class="text-[#62748E] hidden">
+              Closures in JavaScript are functions that have access to the
+              variables and parameters of their parent function, even after the
+              parent function has returned.
+            </p>
+          </div>
+          <button id="minus" class="hidden">
+            <img src="assets/minus.png" alt="" />
+          </button>
+          <button id="plus"><img src="assets/plus.png" alt="" /></button>
+        </div>
+      </section>
+    </main>
+    <hr class="text-red-300 mt-20" />
+    <footer class="flex justify-between mt-20 mb-10">
+      <div class="flex flex-col gap-4">
+        <h1 class="flex items-center text-xl font-semibold">
+          <span>English</span><img src="assets/logo.png" alt="" /><span
+            class="hind-siliguri-medium font-normal"
+            >জানালা</span
+          >
+        </h1>
+        <p class="text-xl font-medium hind-siliguri-medium">
+          ইংরেজি শিখুন সহজে
+        </p>
+        <p class="hind-siliguri-medium">
+          Providing ED-Tech Applications since 2025
+        </p>
+      </div>
+      <div class="flex flex-col gap-2 justify-end">
+        <p class="text-sm font-semibold">Follow US</p>
+        <div class="flex gap-4">
+          <button class="group cursor-pointer">
+            <a href="https://www.facebook.com/programmingHero/" target="_blank"
+              ><img src="assets/fb-thumb.png" alt=""
+            /></a>
+          </button>
+          <button class="cursor-pointer">
+            <a href="https://www.youtube.com/c/ProgrammingHero" target="_blank"
+              ><img src="assets/youtube-thumb.png" alt=""
+            /></a>
+          </button>
+          <button class="cursor-pointer">
+            <a
+              href="https://www.instagram.com/programminghero/?hl=en"
+              target="_blank"
+              ><img src="assets/instagram-thumb.png" alt=""
+            /></a>
+          </button>
+          <button class="cursor-pointer">
+            <a
+              href="https://github.com/ProgrammingHero1?tab=repositories"
+              target="_blank"
+              ><img src="assets/github-thumb.png" alt=""
+            /></a>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="scripts/buttons.js"></script>
+  <script src="scripts/fetchLesson.js"></script>
+  <script src="scripts/toggleToLearn.js"></script>
+  <script src="scripts/faqButtons.js"></script>
+  <script src="scripts/showModal.js"></script>
+  <script src="scripts/check.js"></script>
+</html>
