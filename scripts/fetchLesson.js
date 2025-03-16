@@ -5,19 +5,36 @@ function removerActive() {
     }
 }
 
+const showLoader = () => {
+    document.getElementById("loader").classList.remove("hidden");
+    document.getElementById("words").classList.add("hidden");
+    
+}
+
+const hideLoader = () => {
+    document.getElementById("loader").classList.add("hidden");
+    document.getElementById("words").classList.remove("hidden");
+    document.getElementById("no-words").classList.add("hidden");
+}
+
 function loadWords(id) {
+    showLoader();
     fetch(`https://openapi.programming-hero.com/api/level/${id}`)
         .then((response) => response.json())
         .then((data) => {
+            
             removerActive();
             const clickedLesson = document.getElementById(`lesson-${id}`); 
             clickedLesson.classList.add("active");
+            
             displayWords(data.data);
         });
 }
 
 const displayWords = (words) => {
+    
     const wordsDiv = document.getElementById("words");
+    
     wordsDiv.innerHTML = "";
 
     if(words.length == 0) {
@@ -27,6 +44,7 @@ const displayWords = (words) => {
                 <p class="text-xs text-[#79716B]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
                 <h1 class="text-4xl font-medium">নেক্সট Lesson এ যান</h1>
             </div>`
+            hideLoader();
         return;
     }
     
@@ -48,6 +66,6 @@ const displayWords = (words) => {
         `;
         wordsDiv.appendChild(wordDiv);
     });
-};
 
-loadWords();
+    hideLoader();
+};

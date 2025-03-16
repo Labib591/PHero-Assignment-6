@@ -115,11 +115,17 @@
           <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
         </h1>
         <div id="learn" class="flex gap-4 justify-center mt-10"></div>
+        <div id="loader" class="text-center py-10 col-span-full hidden">
+          <span class="loading loading-dots loading-xs"></span>
+        </div>
         <div
           id="words"
           class="bg-[#F8F8F8] grid grid-cols-3 gap-4 mt-4 p-5 rounded-3xl"
         >
-          <div
+        </div>
+
+        <div
+            id="no-words"
             class="flex flex-col gap-2 items-center justify-center py-14 text-center col-span-full"
           >
             <p class="text-sm text-[#62748E] hind-siliguri-medium">
@@ -131,7 +137,7 @@
               একটি Lesson Select করুন।
             </h1>
           </div>
-        </div>
+
         <dialog id="word_details" class="modal">
           <div
             id="word-details-box"
